@@ -27,6 +27,21 @@ class VectorImage:
 
     def line(self, start, end):
         plt.plot([start[0], end[0]], [start[1], end[1]], 'k-')
+        return self
+
+    def lines(self, lines):
+        for line in lines:
+            self.line(*line)
+        return self
+
+    def point(self, point, color='k'):
+        plt.plot([point[0]], [point[1]], color + 'o')
+        return self
+
+    def points(self, points, color='k'):
+        for point in points:
+            self.point(point, color=color)
+        return self
 
     def save(self, name):
         """To save as SVG, simply use name ending with '.svg'
