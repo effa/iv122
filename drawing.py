@@ -25,8 +25,8 @@ class VectorImage:
             plt.axis('off')
         plt.axis('equal')
 
-    def line(self, start, end):
-        plt.plot([start[0], end[0]], [start[1], end[1]], 'k-')
+    def line(self, start, end, linewidth=1.0):
+        plt.plot([start[0], end[0]], [start[1], end[1]], 'k-', linewidth=linewidth)
         return self
 
     def lines(self, lines):
@@ -60,11 +60,11 @@ class Turtle:
         self.is_pendown = True
         self.lines = []
 
-    def forward(self, distance):
+    def forward(self, distance, linewidth=1.0):
         nx = self.x + cos(self.angle) * distance
         ny = self.y + sin(self.angle) * distance
         if self.is_pendown:
-            self.lines.append(([self.x, self.y], [nx, ny]))
+            self.lines.append(([self.x, self.y], [nx, ny], linewidth))
         self.x = nx
         self.y = ny
 
@@ -84,7 +84,7 @@ class Turtle:
     def pendown(self):
         self.is_pendown = True
 
-    def show(self, size=5, axis=False):
-        im = VectorImage(size=size, axis=axis)
-        for start, end in self.lines:
-            im.line(start, end)
+    def show(self, size=5, axis=False, im=None):
+        im = im or VectorImage(size=size, axis=axis)
+        for start, end, linewidth in self.lines:
+            im.line(start, end, linewidth=linewidth)
