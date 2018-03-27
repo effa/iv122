@@ -3,12 +3,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def show_image(im, axis=False, grid=False, flipy=False):
+def show_image(im, axis=False, grid=False, flipy=False, size=6):
     """Display PIL.Image in jupyter notebook using matplotlib.
 
     Note that new new jupyter notebooks can display PIL.Images themselves. This
     function can be still useful for debugging (using axis and grid options).
     """
+    plt.figure(figsize=[size,size])
     ax = plt.subplot()
     ax.grid(grid)
     if not axis:
