@@ -26,8 +26,10 @@ class VectorImage:
             plt.axis('off')
         plt.axis('equal')
 
-    def line(self, start, end, linewidth=1.0):
-        plt.plot([start[0], end[0]], [start[1], end[1]], 'k-', linewidth=linewidth)
+    def line(self, start, end, linewidth=1.0, color='k'):
+        plt.plot(
+            [start[0], end[0]], [start[1], end[1]], '-',
+            color=color, linewidth=linewidth)
         return self
 
     def lines(self, lines):
@@ -54,18 +56,28 @@ class VectorImage:
 # (+ jupyter display to omit show)
 # TODO: `forward(d, draw=False)` instead of using penup/pendown
 class Turtle:
-    def __init__(self):
+    def __init__(self, angle=0):
+        """Initial angle is in degrees.
+        """
         self.x = 0
         self.y = 0
-        self.angle = 0  # in radians
+        self.angle = radians(angle)
         self.is_pendown = True
         self.lines = []
 
-    def forward(self, distance, linewidth=1.0):
+    @property
+    def state(self):
+        return (self.x, self.y, self.angle)
+
+    @state.setter
+    def state(self, xya):
+        self.x, self.y, self.angle = xya
+
+    def forward(self, distance, color='k', linewidth=1.0):
         nx = self.x + cos(self.angle) * distance
         ny = self.y + sin(self.angle) * distance
         if self.is_pendown:
-            self.lines.append(([self.x, self.y], [nx, ny], linewidth))
+            self.lines.append(([self.x, self.y], [nx, ny], color, linewidth))
         self.x = nx
         self.y = ny
 
@@ -87,5 +99,5 @@ class Turtle:
 
     def show(self, size=5, axis=False, im=None):
         im = im or VectorImage(size=size, axis=axis)
-        for start, end, linewidth in self.lines:
-            im.line(start, end, linewidth=linewidth)
+        for start, end, color, linewidth in self.lines:
+            im.line(start, end, color=color, linewidth=linewidth)
