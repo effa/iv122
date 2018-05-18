@@ -32,13 +32,13 @@ class VectorImage:
             color=color, linewidth=linewidth)
         return self
 
-    def lines(self, lines):
+    def lines(self, lines, **kwargs):
         for line in lines:
-            self.line(*line)
+            self.line(*line, **kwargs)
         return self
 
-    def point(self, point, color='k'):
-        plt.plot([point[0]], [point[1]], color + 'o')
+    def point(self, point, color='k', **kwargs):
+        plt.plot([point[0]], [point[1]], color + 'o', **kwargs)
         return self
 
     def points(self, points, color='k'):
