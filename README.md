@@ -5,7 +5,7 @@
 * [Week 2: Combinatorics](http://nbviewer.jupyter.org/github/effa/iv122/blob/master/02-combinatorics.ipynb)
 * [Week 3: Vector Graphics](http://nbviewer.jupyter.org/github/effa/iv122/blob/master/03-vector-graphics.ipynb)
 * [Week 4: Bitmap Graphics](http://nbviewer.jupyter.org/github/effa/iv122/blob/master/04-bitmap-graphics.ipynb)
-* [Week 5: Geometric Algorithms](http://nbviewer.jupyter.org/github/effa/iv122/blob/master/05-geometrics-algorithms.ipynb)
+* [Week 5: Geometric Algorithms](http://nbviewer.jupyter.org/github/effa/iv122/blob/master/05-geometric-algorithms.ipynb)
 * [Week 6: Fractals, Chaos, L-Systems](http://nbviewer.jupyter.org/github/effa/iv122/blob/master/06-fractals-chaos-lsystems.ipynb)
 * [Week 7: Fractals with Complex Numbers](http://nbviewer.jupyter.org/github/effa/iv122/blob/master/07-fractals-complex-numbers.ipynb)
 * [Week 8: Linear Transformations](http://nbviewer.jupyter.org/github/effa/iv122/blob/master/08-linear-transformations.ipynb)
