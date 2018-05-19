@@ -21,15 +21,15 @@ def show_image(im, axis=False, grid=False, flipy=False, size=6):
 
 class VectorImage:
     def __init__(self, size=5, axis=False):
-        plt.figure(figsize=[size,size])
+        #plt.figure(figsize=[size,size])
+        self.fig, self.ax = plt.subplots(figsize=(size, size))
         if not axis:
-            plt.axis('off')
-        plt.axis('equal')
+            self.ax.set_axis_off()  # plt.axis('off')
+        self.ax.set_aspect('equal')  # plt.axis('equal')
 
-    def line(self, start, end, linewidth=1.0, color='k'):
-        plt.plot(
-            [start[0], end[0]], [start[1], end[1]], '-',
-            color=color, linewidth=linewidth)
+
+    def line(self, start, end, color='k', **kwargs):
+        self.ax.plot([start[0], end[0]], [start[1], end[1]], '-', color=color, **kwargs)
         return self
 
     def lines(self, lines, **kwargs):
@@ -38,18 +38,21 @@ class VectorImage:
         return self
 
     def point(self, point, color='k', **kwargs):
-        plt.plot([point[0]], [point[1]], color + 'o', **kwargs)
+        self.ax.plot([point[0]], [point[1]], color=color, marker='o', **kwargs)
         return self
 
     def points(self, points, color='k'):
         for point in points:
-            self.point(point, color=color)
+            self.ax.point(point, color=color)
         return self
+
+    def clear(self):
+        self.ax.clear()
 
     def save(self, name):
         """To save as SVG, simply use name ending with '.svg'
         """
-        plt.savefig(name)
+        self.fig.savefig(name)  # plt.savefig(name)
 
 
 # TODO: return Turtle for better chaining e.g `turtle.forward(10).left(20)`
