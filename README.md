@@ -29,6 +29,6 @@
 - (Week 7) The fractals are not colored "inside".
 - (Week 8) I wasn't able to make the star and the fern MRCM look nice.
 - (Week 9) I wasn't able to find out which of the groups 3 and 7 is not randomly generated.
-           Also, I didn't find which processes generates them
+           Also, I didn't find which processes generate them
            (I don't even know how to approach this task.)
 - (Week 13) Quantum Maze solver is slow (could be optimized to solve larger mazes).
