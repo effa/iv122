@@ -23,7 +23,6 @@
 
 ## Weaknesses
 - (Week 2) The analyses of accuracy and running time could be more detailed and robust.
-- (Week 3) The code for Pentagon flake is quite long and unreadable.
 - (Week 4) The ellipse cannot be rotated arbitrarily.
 - (Week 4) I could add more custom effects.
 - (Week 7) The fractals are not colored "inside".

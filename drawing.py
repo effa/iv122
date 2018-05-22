@@ -57,7 +57,6 @@ class VectorImage:
 
 # TODO: return Turtle for better chaining e.g `turtle.forward(10).left(20)`
 # (+ jupyter display to omit show)
-# TODO: `forward(d, draw=False)` instead of using penup/pendown
 class Turtle:
     def __init__(self, angle=0):
         """Initial angle is in degrees.
@@ -76,16 +75,16 @@ class Turtle:
     def state(self, xya):
         self.x, self.y, self.angle = xya
 
-    def forward(self, distance, color='k', linewidth=1.0):
+    def forward(self, distance, draw=True, color='k', linewidth=1.0):
         nx = self.x + cos(self.angle) * distance
         ny = self.y + sin(self.angle) * distance
-        if self.is_pendown:
+        if self.is_pendown and draw:
             self.lines.append(([self.x, self.y], [nx, ny], color, linewidth))
         self.x = nx
         self.y = ny
 
-    def back(self, distance):
-        self.forward(-distance)
+    def back(self, distance, draw=True):
+        self.forward(-distance, draw=draw)
 
     def left(self, degrees):
         radians = degrees * pi/180
